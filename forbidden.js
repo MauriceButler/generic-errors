@@ -1,11 +1,11 @@
 var BaseError = require('./baseError');
 
-function ForbiddenError(){
+function Forbidden(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, ForbiddenError);
+    Error.captureStackTrace(this, Forbidden);
 }
-ForbiddenError.prototype = Object.create(BaseError.prototype);
-ForbiddenError.prototype.constructor = ForbiddenError;
-ForbiddenError.prototype.code = 403;
+Forbidden.prototype = Object.create(BaseError.prototype);
+Forbidden.prototype.constructor = Forbidden;
+Forbidden.prototype.code = 403;
 
-module.exports = ForbiddenError;
+module.exports = Forbidden;

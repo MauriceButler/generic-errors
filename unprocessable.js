@@ -1,11 +1,11 @@
 var BaseError = require('./baseError');
 
-function UnprocessableError(){
+function Unprocessable(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, UnprocessableError);
+    Error.captureStackTrace(this, Unprocessable);
 }
-UnprocessableError.prototype = Object.create(BaseError.prototype);
-UnprocessableError.prototype.constructor = UnprocessableError;
-UnprocessableError.prototype.code = 422;
+Unprocessable.prototype = Object.create(BaseError.prototype);
+Unprocessable.prototype.constructor = Unprocessable;
+Unprocessable.prototype.code = 422;
 
-module.exports = UnprocessableError;
+module.exports = Unprocessable;
