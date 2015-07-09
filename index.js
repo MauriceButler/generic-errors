@@ -1,4 +1,4 @@
-module.exports = {
+var constructors = {
     BaseError: require('./baseError'),
     Forbidden: require('./forbidden'),
     Unauthorised: require('./unauthorised'),
@@ -7,3 +7,9 @@ module.exports = {
     PreconditionFailed: require('./preconditionFailed'),
     Teapot: require('./teapot')
 };
+
+for (var key in constructors) {
+    constructors[constructors[key].prototype.code] = constructors[key];
+}
+
+module.exports = constructors;

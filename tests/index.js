@@ -1,14 +1,14 @@
 var test = require('tape'),
     errors = require('../');
 
-function testInflation(t, error){
+function testInflation(t, error, key){
     var originalString = JSON.stringify(error),
         newString = JSON.stringify(new errors.BaseError(JSON.parse(originalString)));
 
-    t.equal(originalString, newString, 'can be inflated correctly');
+    t.equal(originalString, newString, key + ' can be inflated correctly');
 }
 
-function validateError(t, errorConstructor){
+function validateError(t, errorConstructor, key){
     var testMessage = 'TEST ERROR',
         testData = {foo: 'bar'},
         testDataWithMessage = {things: 'stuff', message: 'majigger'},
@@ -19,68 +19,65 @@ function validateError(t, errorConstructor){
         fileName = errorConstructor.name.substring(0, 1).toLowerCase() +
             errorConstructor.name.substring(1) + '.js';
 
-    t.ok(error instanceof Error, 'is instance of Error');
-    t.ok(error instanceof errors.BaseError, 'is instance of BaseError');
-    t.ok(error instanceof errorConstructor, 'is instance of ' + errorConstructor.name);
+    t.ok(error instanceof Error, key + ' is instance of Error');
+    t.ok(error instanceof errors.BaseError, key + ' is instance of BaseError');
+    t.ok(error instanceof errorConstructor, key + ' is instance of ' + errorConstructor.name);
 
-    t.ok(errors.BaseError.isGenericError(error), 'is a GenericError');
-    t.ok(errors.BaseError.isGenericError(JSON.parse(JSON.stringify(error))), 'is a GenericError after serialization');
+    t.ok(errors.BaseError.isGenericError(error), key + ' is a GenericError');
+    t.ok(errors.BaseError.isGenericError(JSON.parse(JSON.stringify(error))), key + ' is a GenericError after serialization');
 
-    t.ok(error.stack, 'has a stack');
-    t.notOk(~error.stack.indexOf(fileName), 'stack trace should be trimmed');
-    t.equal(error.message, errorConstructor.prototype.code + ': ' + errorConstructor.name, 'message defaulted correctly');
-    t.equal(error.toString(), errorConstructor.prototype.code + ': ' + errorConstructor.name, 'toString is set correctly');
-    t.equal(error.valueOf(), error, 'valueOf returns the instance');
-    t.ok(error.code, 'has a code: ' + error.code);
-    t.equal(error.code, errorConstructor.prototype.code, 'has correct code');
+    t.ok(error.stack, key + ' has a stack');
+    t.notOk(~error.stack.indexOf(fileName), key + ' stack trace should be trimmed');
+    t.equal(error.message, errorConstructor.prototype.code + ': ' + errorConstructor.name, key + ' message defaulted correctly');
+    t.equal(error.toString(), errorConstructor.prototype.code + ': ' + errorConstructor.name, key + ' toString is set correctly');
+    t.equal(error.valueOf(), error, key + ' valueOf returns the instance');
+    t.ok(error.code, key + ' has a code: ' + error.code);
+    t.equal(error.code, errorConstructor.prototype.code, key + ' has correct code');
     t.equal(
         JSON.stringify(error),
         '{"__genericError":true,"message":"' +
             error.toString() +
             '","code":' +
             errorConstructor.prototype.code + '}',
-        'stringifys correctly');
+            key + ' stringifys correctly');
 
-    testInflation(t, error);
+    testInflation(t, error, key);
 
-    t.equal(errorWithMessage.message, testMessage, 'message set correctly');
-    t.equal(errorWithMessage.toString(), testMessage, 'toString correctly returns message');
+    t.equal(errorWithMessage.message, testMessage, key + ' message set correctly');
+    t.equal(errorWithMessage.toString(), testMessage, key + ' toString correctly returns message');
     t.equal(
         JSON.stringify(errorWithMessage),
         '{"__genericError":true,"message":"' +
             testMessage +
             '","code":' +
             errorConstructor.prototype.code + '}',
-            'stringifys correctly',
-        'stringifys correctly');
+            key + ' stringifys correctly');
 
-    testInflation(t, errorWithMessage);
+    testInflation(t, errorWithMessage, key);
 
-    t.equal(errorWithData.message, error.toString(), 'message set correctly with data');
-    t.equal(errorWithData.toString(), errorConstructor.prototype.code + ': ' + errorConstructor.name, 'toString correctly returns message with data');
+    t.equal(errorWithData.message, error.toString(), key + ' message set correctly with data');
+    t.equal(errorWithData.toString(), errorConstructor.prototype.code + ': ' + errorConstructor.name, key + ' toString correctly returns message with data');
     t.equal(
         JSON.stringify(errorWithData),
         '{"__genericError":true,"foo":"bar","message":"' +
             error.toString() +
             '","code":' +
             errorConstructor.prototype.code + '}',
-            'stringifys correctly',
-        'stringifys correctly with data');
+            key + ' stringifys correctly with data');
 
-    testInflation(t, errorWithData);
+    testInflation(t, errorWithData, key);
 
-    t.equal(errorWithDataAndMessage.message, testDataWithMessage.message, 'message set correctly with message in data');
-    t.equal(errorWithDataAndMessage.toString(), testDataWithMessage.message, 'toString correctly returns message with message in data');
+    t.equal(errorWithDataAndMessage.message, testDataWithMessage.message, key + ' message set correctly with message in data');
+    t.equal(errorWithDataAndMessage.toString(), testDataWithMessage.message, key + ' toString correctly returns message with message in data');
     t.equal(
         JSON.stringify(errorWithDataAndMessage),
         '{"__genericError":true,"things":"stuff","message":"' +
             testDataWithMessage.message +
             '","code":' +
             errorConstructor.prototype.code + '}',
-            'stringifys correctly',
-        'stringifys correctly with message in data');
+            key + ' stringifys correctly with message in data');
 
-    testInflation(t, errorWithDataAndMessage);
+    testInflation(t, errorWithDataAndMessage, key);
 }
 
 test('base', function(t){
@@ -89,7 +86,7 @@ test('base', function(t){
     t.plan(keys.length * 26);
 
     for(var key in errors){
-        validateError(t, errors[key]);
+        validateError(t, errors[key], key);
     }
 });
 
