@@ -18,6 +18,11 @@ Use an error:
 
     var notFound = new errors.NotFound('Couldn't find the thing');
 
+Add additional Properties to the error
+
+    var unprocessable = new errors.Unprocessable({ message: 'Cant Process', fields: ['foo', bar] });
+
+
 ## Available constructors:
 
     BaseError           // Use to make custom errors, easier to inherit from than Error
