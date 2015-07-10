@@ -1,11 +1,11 @@
 var BaseError = require('./baseError');
 
-function PreconditionFailedError(){
+function PreconditionFailed(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, PreconditionFailedError);
+    Error.captureStackTrace(this, PreconditionFailed);
 }
-PreconditionFailedError.prototype = Object.create(BaseError.prototype);
-PreconditionFailedError.prototype.constructor = PreconditionFailedError;
-PreconditionFailedError.prototype.code = 412;
+PreconditionFailed.prototype = Object.create(BaseError.prototype);
+PreconditionFailed.prototype.constructor = PreconditionFailed;
+PreconditionFailed.prototype.code = 412;
 
-module.exports = PreconditionFailedError;
+module.exports = PreconditionFailed;

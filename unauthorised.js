@@ -1,11 +1,11 @@
 var BaseError = require('./baseError');
 
-function UnauthorisedError(){
+function Unauthorised(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, UnauthorisedError);
+    Error.captureStackTrace(this, Unauthorised);
 }
-UnauthorisedError.prototype = Object.create(BaseError.prototype);
-UnauthorisedError.prototype.constructor = UnauthorisedError;
-UnauthorisedError.prototype.code = 401;
+Unauthorised.prototype = Object.create(BaseError.prototype);
+Unauthorised.prototype.constructor = Unauthorised;
+Unauthorised.prototype.code = 401;
 
-module.exports = UnauthorisedError;
+module.exports = Unauthorised;

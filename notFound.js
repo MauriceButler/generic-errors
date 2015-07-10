@@ -1,11 +1,11 @@
 var BaseError = require('./baseError');
 
-function NotFoundError(){
+function NotFound(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, NotFoundError);
+    Error.captureStackTrace(this, NotFound);
 }
-NotFoundError.prototype = Object.create(BaseError.prototype);
-NotFoundError.prototype.constructor = NotFoundError;
-NotFoundError.prototype.code = 404;
+NotFound.prototype = Object.create(BaseError.prototype);
+NotFound.prototype.constructor = NotFound;
+NotFound.prototype.code = 404;
 
-module.exports = NotFoundError;
+module.exports = NotFound;
