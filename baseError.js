@@ -18,6 +18,10 @@ function BaseError(data){
         for(var key in data){
             this[key] = data[key];
         }
+
+        if(!this.message && data && data.message){
+            this.message = data.message;
+        }
     }
 
     if(!this.message){
