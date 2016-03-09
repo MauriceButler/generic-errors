@@ -8,7 +8,9 @@ function BaseError(data){
 
     Error.stackTraceLimit = oldLimit;
 
-    Error.captureStackTrace(this, BaseError);
+    if(Error.captureStackTrace){
+        Error.captureStackTrace(this, BaseError);
+    }
 
     this.__genericError = true;
 
