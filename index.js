@@ -5,7 +5,8 @@ var constructors = {
     NotFound: require('./notFound'),
     Unprocessable: require('./unprocessable'),
     PreconditionFailed: require('./preconditionFailed'),
-    Teapot: require('./teapot')
+    Teapot: require('./teapot'),
+    Conflict: require('./conflict'),
 };
 
 for (var key in constructors) {
