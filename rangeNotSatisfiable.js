@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function RangeNotSatisfiable() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, RangeNotSatisfiable);
+    captureStackTrace(this, RangeNotSatisfiable);
 }
 RangeNotSatisfiable.prototype = Object.create(BaseError.prototype);
 RangeNotSatisfiable.prototype.constructor = RangeNotSatisfiable;

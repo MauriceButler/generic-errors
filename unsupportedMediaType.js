@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function UnsupportedMediaType() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, UnsupportedMediaType);
+    captureStackTrace(this, UnsupportedMediaType);
 }
 UnsupportedMediaType.prototype = Object.create(BaseError.prototype);
 UnsupportedMediaType.prototype.constructor = UnsupportedMediaType;

@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function Teapot(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, Teapot);
+    captureStackTrace(this, Teapot);
 }
 Teapot.prototype = Object.create(BaseError.prototype);
 Teapot.prototype.constructor = Teapot;

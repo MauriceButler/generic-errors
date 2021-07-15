@@ -33,5 +33,7 @@
   "devDependencies": {
     "tape": "^5.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "capture-stack-trace": "^1.0.1"
+  }
 }

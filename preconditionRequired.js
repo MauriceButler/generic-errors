@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function PreconditionRequired() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, PreconditionRequired);
+    captureStackTrace(this, PreconditionRequired);
 }
 PreconditionRequired.prototype = Object.create(BaseError.prototype);
 PreconditionRequired.prototype.constructor = PreconditionRequired;

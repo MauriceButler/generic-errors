@@ -1,3 +1,5 @@
+var captureStackTrace = require('capture-stack-trace');
+
 function BaseError(data){
     var oldLimit = Error.stackTraceLimit,
         error;
@@ -8,9 +10,7 @@ function BaseError(data){
 
     Error.stackTraceLimit = oldLimit;
 
-    if(Error.captureStackTrace){
-        Error.captureStackTrace(this, BaseError);
-    }
+    captureStackTrace(this, BaseError);
 
     this.__genericError = true;
 

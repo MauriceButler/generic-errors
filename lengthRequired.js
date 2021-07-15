@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function LengthRequired() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, LengthRequired);
+    captureStackTrace(this, LengthRequired);
 }
 LengthRequired.prototype = Object.create(BaseError.prototype);
 LengthRequired.prototype.constructor = LengthRequired;

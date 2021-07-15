@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function UnavailableForLegalReasons() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, UnavailableForLegalReasons);
+    captureStackTrace(this, UnavailableForLegalReasons);
 }
 UnavailableForLegalReasons.prototype = Object.create(BaseError.prototype);
 UnavailableForLegalReasons.prototype.constructor = UnavailableForLegalReasons;

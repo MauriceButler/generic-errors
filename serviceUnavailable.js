@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function ServiceUnavailable() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, ServiceUnavailable);
+    captureStackTrace(this, ServiceUnavailable);
 }
 ServiceUnavailable.prototype = Object.create(BaseError.prototype);
 ServiceUnavailable.prototype.constructor = ServiceUnavailable;

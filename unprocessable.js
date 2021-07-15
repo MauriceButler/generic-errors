@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function Unprocessable(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, Unprocessable);
+    captureStackTrace(this, Unprocessable);
 }
 Unprocessable.prototype = Object.create(BaseError.prototype);
 Unprocessable.prototype.constructor = Unprocessable;

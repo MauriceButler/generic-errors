@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function TooManyRequests() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, TooManyRequests);
+    captureStackTrace(this, TooManyRequests);
 }
 TooManyRequests.prototype = Object.create(BaseError.prototype);
 TooManyRequests.prototype.constructor = TooManyRequests;
