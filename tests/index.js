@@ -1,12 +1,12 @@
 var test = require('tape'),
     errors = require('../');
 
-function testDeflateInflate(t, error, name, expecedString) {
+function testDeflateInflate(t, error, name, expectedString) {
     var originalString = JSON.stringify(error),
         inflatedError = new errors[error.code](JSON.parse(originalString)),
         newString = JSON.stringify(inflatedError);
 
-    t.equal(JSON.stringify(error), expecedString, name + ' stringifys correctly');
+    t.equal(JSON.stringify(error), expectedString, name + ' stringifys correctly');
 
     t.equal(originalString, newString, name + ' serialises correctly');
 }
