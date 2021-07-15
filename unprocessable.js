@@ -1,7 +1,7 @@
 var BaseError = require('./baseError');
 var captureStackTrace = require('capture-stack-trace');
 
-function Unprocessable(){
+function Unprocessable() {
     BaseError.apply(this, arguments);
     captureStackTrace(this, Unprocessable);
 }

@@ -1,7 +1,7 @@
 var BaseError = require('./baseError');
 var captureStackTrace = require('capture-stack-trace');
 
-function Unauthorised(){
+function Unauthorised() {
     BaseError.apply(this, arguments);
     captureStackTrace(this, Unauthorised);
 }

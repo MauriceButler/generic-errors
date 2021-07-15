@@ -1,39 +1,39 @@
 {
-  "name": "generic-errors",
-  "version": "2.2.1",
-  "description": "Generic errors with common http codes",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "node ./tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MauriceButler/generic-errors.git"
-  },
-  "keywords": [
-    "error",
-    "errors",
-    "http",
-    "custom",
-    "generic",
-    "code",
-    "404",
-    "200",
-    "teapot"
-  ],
-  "author": "Maurice Butler <maurice.butler@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MauriceButler/generic-errors/issues"
-  },
-  "homepage": "https://github.com/MauriceButler/generic-errors",
-  "devDependencies": {
-    "tape": "^5.0.1"
-  },
-  "dependencies": {
-    "capture-stack-trace": "^1.0.1"
-  }
+    "name": "generic-errors",
+    "version": "2.2.1",
+    "description": "Generic errors with common http codes",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "node ./tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MauriceButler/generic-errors.git"
+    },
+    "keywords": [
+        "error",
+        "errors",
+        "http",
+        "custom",
+        "generic",
+        "code",
+        "404",
+        "200",
+        "teapot"
+    ],
+    "author": "Maurice Butler <maurice.butler@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/MauriceButler/generic-errors/issues"
+    },
+    "homepage": "https://github.com/MauriceButler/generic-errors",
+    "devDependencies": {
+        "tape": "^5.0.1"
+    },
+    "dependencies": {
+        "capture-stack-trace": "^1.0.1"
+    }
 }
