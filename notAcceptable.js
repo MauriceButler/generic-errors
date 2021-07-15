@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function NotAcceptable() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, NotAcceptable);
+    captureStackTrace(this, NotAcceptable);
 }
 NotAcceptable.prototype = Object.create(BaseError.prototype);
 NotAcceptable.prototype.constructor = NotAcceptable;

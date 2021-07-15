@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function VariantAlsoNegotiates() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, VariantAlsoNegotiates);
+    captureStackTrace(this, VariantAlsoNegotiates);
 }
 VariantAlsoNegotiates.prototype = Object.create(BaseError.prototype);
 VariantAlsoNegotiates.prototype.constructor = VariantAlsoNegotiates;

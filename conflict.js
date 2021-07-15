@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function Conflict(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, Conflict);
+    captureStackTrace(this, Conflict);
 }
 Conflict.prototype = Object.create(BaseError.prototype);
 Conflict.prototype.constructor = Conflict;

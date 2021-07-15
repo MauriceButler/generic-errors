@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function ExpectationFailed() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, ExpectationFailed);
+    captureStackTrace(this, ExpectationFailed);
 }
 ExpectationFailed.prototype = Object.create(BaseError.prototype);
 ExpectationFailed.prototype.constructor = ExpectationFailed;

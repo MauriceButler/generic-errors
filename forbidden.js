@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function Forbidden(){
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, Forbidden);
+    captureStackTrace(this, Forbidden);
 }
 Forbidden.prototype = Object.create(BaseError.prototype);
 Forbidden.prototype.constructor = Forbidden;

@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function TooEarly() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, TooEarly);
+    captureStackTrace(this, TooEarly);
 }
 TooEarly.prototype = Object.create(BaseError.prototype);
 TooEarly.prototype.constructor = TooEarly;

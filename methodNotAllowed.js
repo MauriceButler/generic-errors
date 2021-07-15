@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function MethodNotAllowed() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, MethodNotAllowed);
+    captureStackTrace(this, MethodNotAllowed);
 }
 MethodNotAllowed.prototype = Object.create(BaseError.prototype);
 MethodNotAllowed.prototype.constructor = MethodNotAllowed;

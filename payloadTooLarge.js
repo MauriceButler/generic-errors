@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function PayloadTooLarge() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, PayloadTooLarge);
+    captureStackTrace(this, PayloadTooLarge);
 }
 PayloadTooLarge.prototype = Object.create(BaseError.prototype);
 PayloadTooLarge.prototype.constructor = PayloadTooLarge;

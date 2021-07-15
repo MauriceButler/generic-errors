@@ -1,8 +1,9 @@
 var BaseError = require('./baseError');
+var captureStackTrace = require('capture-stack-trace');
 
 function BadGateway() {
     BaseError.apply(this, arguments);
-    Error.captureStackTrace(this, BadGateway);
+    captureStackTrace(this, BadGateway);
 }
 BadGateway.prototype = Object.create(BaseError.prototype);
 BadGateway.prototype.constructor = BadGateway;
