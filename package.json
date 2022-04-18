@@ -31,7 +31,7 @@
     },
     "homepage": "https://github.com/MauriceButler/generic-errors",
     "devDependencies": {
-        "tape": "^5.0.1"
+        "tape": "^5.5.3"
     },
     "dependencies": {
         "capture-stack-trace": "^1.0.1"
